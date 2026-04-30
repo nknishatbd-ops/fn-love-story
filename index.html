@@ -12,7 +12,7 @@
         :root {
             --primary-pink: #f26891;
             --soft-pink-bg: #ffeef1;
-            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.7);
         }
 
         body {
@@ -23,111 +23,120 @@
 
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 7%; background: rgba(255, 255, 255, 0.2);
+            padding: 15px 7%; background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
         }
         .logo { font-size: 22px; font-weight: 700; color: #333; }
         .logo span { color: var(--primary-pink); }
 
-        /* ইউটিউব সার্চ বক্স */
+        /* ইউটিউব সেকশন */
         .youtube-section {
-            width: 90%; max-width: 700px; margin: 30px auto;
-            background: var(--glass-bg); padding: 20px; border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
+            width: 90%; max-width: 650px; margin: 30px auto;
+            background: var(--glass-bg); padding: 25px; border-radius: 35px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); text-align: center;
+            border: 1px solid white;
         }
-        .search-box {
-            display: flex; gap: 10px; margin-bottom: 15px;
+        .search-container {
+            display: flex; gap: 10px; margin-bottom: 20px;
+            background: white; padding: 5px; border-radius: 30px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
         }
-        .search-box input {
-            flex: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #fff; outline: none;
+        .search-container input {
+            flex: 1; padding: 12px 20px; border: none; outline: none;
+            background: transparent; font-family: 'Poppins', sans-serif;
         }
-        .search-box button {
-            padding: 10px 20px; border-radius: 25px; border: none; background: var(--primary-pink); color: white; cursor: pointer;
+        .search-container button {
+            background: var(--primary-pink); color: white; border: none;
+            padding: 10px 25px; border-radius: 25px; cursor: pointer; transition: 0.3s;
         }
-        .video-wrapper {
+        .search-container button:hover { background: #d63384; }
+
+        .video-box {
             position: relative; padding-bottom: 56.25%; height: 0;
-            overflow: hidden; border-radius: 20px; background: #000;
+            overflow: hidden; border-radius: 25px; background: #000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .video-wrapper iframe {
+        .video-box iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* সোয়াইপ গ্যালারি স্টাইল */
-        .gallery-section { width: 90%; max-width: 500px; margin: 40px auto; }
-        .swiper { width: 100%; height: auto; padding-bottom: 50px; }
+        /* সোয়াইপ গ্যালারি */
+        .gallery-container { width: 90%; max-width: 450px; margin: 40px auto; }
+        .swiper { width: 100%; padding-bottom: 50px; }
         .swiper-slide {
-            background: #fff; border-radius: 30px; overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid #fff;
+            background: #fff; border-radius: 35px; overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 4px solid #fff;
         }
         .swiper-slide img { width: 100%; height: 350px; object-fit: cover; }
-        .photo-info { padding: 20px; text-align: center; background: #fff; }
-        .photo-info h4 { margin: 0; color: var(--primary-pink); }
-        .photo-info p { font-size: 13px; color: #777; margin: 10px 0; line-height: 1.5; }
-        .timestamp { font-size: 11px; font-weight: bold; color: #aaa; text-transform: uppercase; }
+        .photo-text { padding: 20px; text-align: center; }
+        .photo-text h4 { margin: 0 0 10px; color: var(--primary-pink); font-size: 18px; }
+        .photo-text p { font-size: 13px; color: #666; margin-bottom: 15px; line-height: 1.6; }
+        .meta { font-size: 11px; font-weight: 700; color: #bbb; letter-spacing: 1px; }
 
-        /* অ্যাকশন বাটন */
-        .action-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px 7%;
+        /* কল ও গেম বাটন */
+        .action-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
+            padding: 20px 7%; max-width: 600px; margin: 0 auto;
         }
-        .action-item {
-            background: #fff; padding: 15px; border-radius: 20px; text-decoration: none;
-            display: flex; flex-direction: column; align-items: center; transition: 0.3s;
+        .action-card {
+            background: #fff; padding: 15px; border-radius: 22px;
+            text-decoration: none; display: flex; flex-direction: column;
+            align-items: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
-        .action-item i { font-size: 22px; color: var(--primary-pink); margin-bottom: 5px; }
-        .action-item span { font-size: 12px; font-weight: 600; color: #555; }
+        .action-card:hover { transform: translateY(-5px); border: 1px solid var(--primary-pink); }
+        .action-card i { font-size: 22px; color: var(--primary-pink); margin-bottom: 8px; }
+        .action-card span { font-size: 11px; font-weight: 600; color: #444; }
 
-        @media (max-width: 768px) {
-            .action-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        @media (max-width: 768px) { .action-bar { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo"><span>NF</span> Love Story</div>
-        <i class="fas fa-heart" style="color: var(--primary-pink);"></i>
+        <i class="fas fa-heart" style="color: var(--primary-pink); animation: beat 1s infinite alternate;"></i>
     </header>
 
     <div class="youtube-section">
-        <h3 style="margin-bottom: 15px;">🎵 Search & Play Music</h3>
-        <div class="search-box">
-            <input type="text" id="ytQuery" placeholder="গানের নাম লিখুন...">
-            <button onclick="searchYouTube()"><i class="fas fa-search"></i></button>
+        <h3 style="margin-top: 0;">🎵 Search Your Song</h3>
+        <div class="search-container">
+            <input type="text" id="songInput" placeholder="গানের নাম লিখে সার্চ করুন...">
+            <button onclick="playSong()"><i class="fas fa-play"></i></button>
         </div>
-        <div class="video-wrapper">
-            <iframe id="ytPlayer" src="https://www.youtube.com/embed/videoseries?list=PL_8-pS2XvPcl6D_vX23hT908A7_eA4-I8&modestbranding=1" allowfullscreen></iframe>
+        <div class="video-box">
+            <iframe id="videoPlayer" src="https://www.youtube.com/embed?listType=search&list=romantic+bangla+songs&modestbranding=1" allowfullscreen></iframe>
         </div>
     </div>
 
-    <div class="gallery-section">
-        <h3 style="text-align: center; margin-bottom: 20px;">📸 Our Memories (Swipe)</h3>
+    <div class="gallery-container">
+        <h3 style="text-align: center; margin-bottom: 25px;">📸 Our Memories</h3>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 
                 <div class="swiper-slide">
                     <img src="Screenshot_20260428-203759.jpg" alt="Memory 1">
-                    <div class="photo-info">
+                    <div class="photo-text">
                         <h4>প্রথম আলাপ</h4>
-                        <p>এই ছবিটা তোলা হয়েছিল আমাদের সম্পর্কের শুরুতে। দিনটা ছিল খুব রোদেলা আর আমরা খুব লজ্জিত ছিলাম।</p>
-                        <div class="timestamp">📅 ২০ জুন, ২০২৫ | দুপুর ২:৩০</div>
+                        <p>সেদিন আমরা খুব লাজুক ছিলাম। এই ছবিটা আমাদের সবচাইতে সুন্দর শুরুর সাক্ষী।</p>
+                        <div class="meta">📅 ২০ জুন, ২০২৫ | দুপুর ২:৩০</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <img src="Screenshot_20260428-203759.jpg" alt="Memory 2">
-                    <div class="photo-info">
-                        <h4>সুন্দর মুহূর্ত</h4>
-                        <p>হঠাৎ করেই এই ছবিটা তুলেছিলাম। তোমার হাসিতে চারপাশ উজ্জ্বল হয়ে গিয়েছিল।</p>
-                        <div class="timestamp">📅 ১৫ আগস্ট, ২০২৫ | সন্ধ্যা ৬:০০</div>
+                    <div class="photo-text">
+                        <h4>চায়ের আড্ডা</h4>
+                        <p>বৃষ্টির দিনে এক সাথে চা খাওয়ার মুহূর্ত। সময়টা যেন থেমে গিয়েছিল।</p>
+                        <div class="meta">📅 ১৫ আগস্ট, ২০২৫ | সন্ধ্যা ৬:০০</div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <img src="Screenshot_20260428-203759.jpg" alt="Memory 3">
-                    <div class="photo-info">
-                        <h4>বিশেষ ডিনার</h4>
-                        <p>সেদিন আমরা খুব মজার খাবার খেয়েছিলাম। এই মুহূর্তটা আজীবন মনে থাকবে।</p>
-                        <div class="timestamp">📅 ১০ ডিসেম্বর, ২০২৫ | রাত ৯:১৫</div>
+                    <div class="photo-text">
+                        <h4>হাসিখুশি দিন</h4>
+                        <p>কোনো কারণ ছাড়াই তোমার হাসি দেখে তোলা। এই হাসিটা আমার সারা জীবনের সম্বল।</p>
+                        <div class="meta">📅 ১০ ডিসেম্বর, ২০২৫ | রাত ৯:১৫</div>
                     </div>
                 </div>
 
@@ -136,29 +145,41 @@
         </div>
     </div>
 
-    <div class="action-grid">
-        <a href="https://meet.jit.si/NF-Room" class="action-item"><i class="fas fa-video"></i><span>কল</span></a>
-        <a href="#" class="action-item"><i class="fas fa-comments"></i><span>চ্যাট</span></a>
-        <a href="https://www.ludoking.com/" class="action-item"><i class="fas fa-dice"></i><span>লুডু</span></a>
-        <a href="https://poki.com/" class="action-item"><i class="fas fa-gamepad"></i><span>গেমস</span></a>
+    <div class="action-bar">
+        <a href="https://meet.jit.si/NF-Love-Story" target="_blank" class="action-card"><i class="fas fa-video"></i><span>কল</span></a>
+        <a href="https://m.me/yourprofile" target="_blank" class="action-card"><i class="fas fa-comments"></i><span>চ্যাট</span></a>
+        <a href="https://www.ludoking.com/" target="_blank" class="action-card"><i class="fas fa-dice"></i><span>লুডু</span></a>
+        <a href="https://poki.com/en/2-player" target="_blank" class="action-card"><i class="fas fa-gamepad"></i><span>গেমস</span></a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // ইউটিউব সার্চ ফাংশন
-        function searchYouTube() {
-            let query = document.getElementById('ytQuery').value;
-            if(query) {
-                let videoUrl = "https://www.youtube.com/embed?listType=search&list=" + encodeURIComponent(query) + "&modestbranding=1";
-                document.getElementById('ytPlayer').src = videoUrl;
+        // ইউটিউব সার্চ লজিক
+        function playSong() {
+            const songName = document.getElementById('songInput').value;
+            if(songName.trim() !== "") {
+                const searchUrl = "https://www.youtube.com/embed?listType=search&list=" + encodeURIComponent(songName) + "&modestbranding=1&autoplay=1";
+                document.getElementById('videoPlayer').src = searchUrl;
+            } else {
+                alert("দয়া করে গানের নাম লিখুন!");
             }
         }
 
-        // গ্যালারি স্লাইডার সেটআপ
+        // এন্টার চাপলে সার্চ হবে
+        document.getElementById('songInput').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                playSong();
+            }
+        });
+
+        // গ্যালারি স্লাইডার
         var swiper = new Swiper(".mySwiper", {
-            effect: "cards",
+            effect: "coverflow",
             grabCursor: true,
-            pagination: { el: ".swiper-pagination", clickable: true },
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+            pagination: { el: ".swiper-pagination" },
         });
     </script>
 </body>

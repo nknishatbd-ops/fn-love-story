@@ -3,76 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NF Love Story - Our Private Playlist</title>
+    <title>NF Love Story - Our Premium World</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <style>
         :root {
             --primary-pink: #f26891;
-            --glass-bg: rgba(255, 255, 255, 0.8);
+            --soft-pink: #ffeef1;
+            --dark-pink: #d63384;
+            --glass: rgba(255, 255, 255, 0.7);
         }
 
         body {
             margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
             background: radial-gradient(circle at top left, #ffeef1 0%, #f7d1d7 100%);
-            color: #5d4a4a; overflow-x: hidden;
+            color: #333; overflow-x: hidden;
         }
 
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 7%; background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #fff;
         }
-        .logo { font-size: 22px; font-weight: 700; color: #333; }
+        .logo { font-size: 22px; font-weight: 700; }
         .logo span { color: var(--primary-pink); }
 
-        /* প্লেলিস্ট কন্টেইনার */
-        .playlist-section {
-            width: 90%; max-width: 900px; margin: 30px auto;
-            background: var(--glass-bg); padding: 20px; border-radius: 35px;
+        /* ইউটিউব প্লেলিস্ট সেকশন */
+        .main-container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        
+        .playlist-wrapper {
+            background: var(--glass); border-radius: 30px; overflow: hidden;
+            display: grid; grid-template-columns: 1.5fr 1fr; border: 1px solid white;
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;
-            border: 1px solid white;
         }
 
-        /* ভিডিও প্লেয়ার */
-        .video-side { width: 100%; }
-        .video-box {
-            position: relative; padding-bottom: 56.25%; height: 0;
-            overflow: hidden; border-radius: 20px; background: #000;
-        }
-        .video-box iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
+        .video-player { padding: 20px; background: #000; }
+        .video-box { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 15px; }
 
-        /* গানের লিস্ট */
-        .list-side {
-            max-height: 400px; overflow-y: auto; padding-right: 10px;
-        }
-        .list-side h4 { margin-top: 0; color: var(--primary-pink); border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        
+        .song-list { padding: 20px; max-height: 400px; overflow-y: auto; background: #fff; }
         .song-item {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px; border-radius: 15px; background: white;
-            margin-bottom: 10px; cursor: pointer; transition: 0.3s;
-            border: 1px solid transparent;
+            display: flex; align-items: center; gap: 10px; padding: 10px;
+            border-radius: 12px; cursor: pointer; transition: 0.3s; margin-bottom: 10px;
+            border: 1px solid #eee;
         }
-        .song-item:hover { background: #fff0f3; border-color: var(--primary-pink); }
+        .song-item:hover { background: var(--soft-pink); border-color: var(--primary-pink); }
         .song-item.active { background: var(--primary-pink); color: white; }
-        
-        .song-item img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
-        .song-info { flex: 1; }
-        .song-info div { font-size: 13px; font-weight: 600; }
-        .song-info span { font-size: 11px; opacity: 0.8; }
+        .song-item img { width: 45px; height: 45px; border-radius: 8px; object-fit: cover; }
+        .song-item div { font-size: 13px; font-weight: 600; }
 
-        /* স্ক্রলবার ডিজাইন */
-        .list-side::-webkit-scrollbar { width: 5px; }
-        .list-side::-webkit-scrollbar-thumb { background: var(--primary-pink); border-radius: 10px; }
+        /* গ্যালারি সোয়াইপ সেকশন */
+        .gallery-section { margin: 50px 0; }
+        .swiper { width: 100%; max-width: 450px; padding-bottom: 50px; }
+        .swiper-slide {
+            background: #fff; border-radius: 25px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid #fff;
+        }
+        .swiper-slide img { width: 100%; height: 350px; object-fit: cover; }
+        .photo-desc { padding: 20px; text-align: center; }
+        .photo-desc h4 { color: var(--primary-pink); margin: 0 0 10px; }
+        .photo-desc p { font-size: 13px; color: #666; line-height: 1.5; }
+        .meta-date { font-size: 11px; font-weight: bold; color: #bbb; margin-top: 10px; }
+
+        /* অ্যাকশন বাটন গ্রিড */
+        .action-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 50px;
+        }
+        .action-card {
+            background: #fff; padding: 20px; border-radius: 20px; text-decoration: none;
+            display: flex; flex-direction: column; align-items: center; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #fff;
+        }
+        .action-card:hover { transform: translateY(-5px); border-color: var(--primary-pink); }
+        .action-card i { font-size: 24px; color: var(--primary-pink); margin-bottom: 10px; }
+        .action-card span { font-size: 12px; font-weight: 600; color: #444; }
 
         @media (max-width: 768px) {
-            .playlist-section { grid-template-columns: 1fr; }
-            .list-side { max-height: none; }
+            .playlist-wrapper { grid-template-columns: 1fr; }
+            .action-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -83,64 +93,94 @@
         <i class="fas fa-heart" style="color: var(--primary-pink);"></i>
     </header>
 
-    <h3 style="text-align: center; margin-top: 30px;">🎵 Our Love Playlist</h3>
-
-    <div class="playlist-section">
-        <div class="video-side">
-            <div class="video-box">
-                <iframe id="mainPlayer" src="https://www.youtube.com/embed/rV9Vp-2P0hE?modestbranding=1&rel=0" allowfullscreen></iframe>
+    <div class="main-container">
+        
+        <h3 style="text-align: center; margin-bottom: 20px;">🎵 Our Cinema & Music</h3>
+        <div class="playlist-wrapper">
+            <div class="video-player">
+                <div class="video-box">
+                    <iframe id="mainYT" src="https://www.youtube.com/embed/rV9Vp-2P0hE?modestbranding=1" allowfullscreen></iframe>
+                </div>
             </div>
-            <p id="nowPlaying" style="margin-top: 15px; font-weight: 600; font-size: 14px; text-align: center;">এখন চলছে: আমাদের প্রিয় গান</p>
+            <div class="song-list">
+                <div class="song-item active" onclick="playThis('rV9Vp-2P0hE', this)">
+                    <img src="https://img.youtube.com/vi/rV9Vp-2P0hE/default.jpg">
+                    <div>আমাদের প্রিয় গান</div>
+                </div>
+                <div class="song-item" onclick="playThis('3jWRrafhO7M', this)">
+                    <img src="https://img.youtube.com/vi/3jWRrafhO7M/default.jpg">
+                    <div>অপেক্ষা (Romantic)</div>
+                </div>
+                <div class="song-item" onclick="playThis('dQw4w9WgXcQ', this)">
+                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/default.jpg">
+                    <div>লিংকন - গান</div>
+                </div>
+            </div>
         </div>
 
-        <div class="list-side">
-            <h4>গানের তালিকা</h4>
-            
-            <div class="song-item active" onclick="changeSong('rV9Vp-2P0hE', 'আমাদের প্রিয় গান', this)">
-                <img src="https://img.youtube.com/vi/rV9Vp-2P0hE/default.jpg">
-                <div class="song-info">
-                    <div>আমাদের প্রিয় গান</div>
-                    <span>Nishat & Farjana Choice</span>
+        <div class="gallery-section">
+            <h3 style="text-align: center; margin-bottom: 25px;">📸 Memory Lane</h3>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="1000071098.jpg" alt="Memory">
+                        <div class="photo-desc">
+                            <h4>Special Moment</h4>
+                            <p>এই ছবিটা আমাদের জীবনের অন্যতম শ্রেষ্ঠ স্মৃতি। সময়টা ছিল একদম ম্যাজিকাল!</p>
+                            <div class="meta-date">📅 ৩০ এপ্রিল, ২০২৪ | বিকেল ৫:০০</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="1000071098.jpg" alt="Memory">
+                        <div class="photo-desc">
+                            <h4>প্রথম দেখা</h4>
+                            <p>সব শুরুর একটা গল্প থাকে, আর আমাদের গল্পটা ছিল ঠিক এই মুহূর্তটার মতো সুন্দর।</p>
+                            <div class="meta-date">📅 ১৫ জুন, ২০২৪ | দুপুর ২:৩০</div>
+                        </div>
+                    </div>
                 </div>
-                <i class="fas fa-play-circle"></i>
+                <div class="swiper-pagination"></div>
             </div>
+        </div>
 
-            <div class="song-item" onclick="changeSong('dQw4w9WgXcQ', 'রোমান্টিক টিউন', this)">
-                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/default.jpg">
-                <div class="song-info">
-                    <div>রোমান্টিক টিউন</div>
-                    <span>Special Moments</span>
-                </div>
-                <i class="fas fa-play-circle"></i>
-            </div>
+        <h3 style="text-align: center; margin-bottom: 20px;">🎮 Fun & Adda Zone</h3>
+        <div class="action-grid">
+            <a href="https://meet.jit.si/NF-Love-Private" target="_blank" class="action-card">
+                <i class="fas fa-video"></i><span>ভিডিও কল</span>
+            </a>
+            <a href="https://m.me/your-profile-link" target="_blank" class="action-card">
+                <i class="fas fa-comments"></i><span>এসএমএস</span>
+            </a>
+            <a href="https://www.ludoking.com/" target="_blank" class="action-card">
+                <i class="fas fa-dice"></i><span>লুডু খেলি</span>
+            </a>
+            <a href="https://poki.com/en/2-player" target="_blank" class="action-card">
+                <i class="fas fa-gamepad"></i><span>অন্যান্য গেম</span>
+            </a>
+        </div>
 
-            <div class="song-item" onclick="changeSong('3jWRrafhO7M', 'অপেক্ষা', this)">
-                <img src="https://img.youtube.com/vi/3jWRrafhO7M/default.jpg">
-                <div class="song-info">
-                    <div>অপেক্ষা</div>
-                    <span>Heart Touching</span>
-                </div>
-                <i class="fas fa-play-circle"></i>
-            </div>
-
-            </div>
     </div>
 
-    <script>
-        function changeSong(videoId, title, element) {
-            // প্লেয়ার আপডেট
-            const player = document.getElementById('mainPlayer');
-            player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&modestbranding=1&rel=0";
-            
-            // টাইটেল আপডেট
-            document.getElementById('nowPlaying').innerText = "এখন চলছে: " + title;
+    <footer style="text-align: center; padding: 30px; color: #888; font-size: 12px;">
+        Created for Nishat & Farjana ❤️ 2026
+    </footer>
 
-            // একটিভ ক্লাস পরিবর্তন
-            const items = document.querySelectorAll('.song-item');
-            items.forEach(item => item.classList.remove('active'));
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // ইউটিউব প্লেলিস্ট ফাংশন
+        function playThis(id, element) {
+            document.getElementById('mainYT').src = "https://www.youtube.com/embed/" + id + "?autoplay=1&modestbranding=1";
+            let items = document.querySelectorAll('.song-item');
+            items.forEach(i => i.classList.remove('active'));
             element.classList.add('active');
         }
-    </script>
 
+        // গ্যালারি স্লাইডার সেটআপ
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+        });
+    </script>
 </body>
-</html>
+    </html>

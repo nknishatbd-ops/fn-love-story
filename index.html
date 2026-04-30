@@ -3,196 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FN Love Corner</title>
+    <title>FN Love Story - The Premium Adda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        body { 
-            margin: 0; 
-            font-family: 'Segoe UI', sans-serif; 
-            background: radial-gradient(circle at top left, #ffeef1 0%, #f7d1d7 100%); 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            color: #5d4a4a; 
-            padding-bottom: 30px; 
+        :root {
+            --primary-pink: #f26891;
+            --soft-pink-bg: #ffeef1;
+            --dark-pink: #d63384;
+            --text-color: #5d4a4a;
+            --glass-bg: rgba(255, 255, 255, 0.45);
         }
 
-        header { text-align: center; padding: 20px; }
-        .heart-icon-main { 
-            font-size: 60px; 
-            color: #f06292; 
-            animation: beat 1.5s infinite; 
-            text-shadow: 0 5px 15px rgba(240, 98, 146, 0.3); 
-        }
-        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        h1 { margin: 10px 0; font-size: 2.2em; color: #333; }
-
-        /* ইউটিউব প্লেয়ার */
-        .video-box { 
-            width: 95%; 
-            max-width: 500px; 
-            border-radius: 25px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            background: #000; 
-            aspect-ratio: 16/9; 
-            margin-bottom: 30px; 
-            border: 4px solid rgba(255, 255, 255, 0.6); 
+        body {
+            margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #ffeef1 0%, #f7d1d7 100%);
+            color: var(--text-color); overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* অ্যাকশন গ্রিড */
-        .action-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px; 
-            width: 90%; 
-            max-width: 450px; 
-            margin-bottom: 30px; 
-        }
-        .action-card { 
-            background: rgba(255, 255, 255, 0.6); 
-            backdrop-filter: blur(10px); 
-            padding: 15px; 
-            border-radius: 20px; 
-            text-align: center; 
-            border: 1px solid white; 
-            text-decoration: none; 
-            color: #d63384; 
-            font-weight: bold; 
-            transition: 0.3s; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-        }
-        .action-card:hover { 
-            transform: translateY(-5px); 
-            background: #fff; 
-            box-shadow: 0 10px 25px rgba(240, 98, 146, 0.2); 
-        }
-        .action-card i { font-size: 24px; margin-bottom: 8px; display: block; color: #f06292; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* চারকোনা গ্যালারি স্টাইল */
-        .gallery-container { width: 90%; max-width: 800px; text-align: center; margin-top: 20px; }
-        .gallery-title { 
-            font-size: 1.5em; 
-            color: #d63384; 
-            font-weight: bold; 
-            margin-bottom: 20px; 
-            background: rgba(255,255,255,0.3); 
-            padding: 5px 15px; 
-            border-radius: 20px; 
-            display: inline-block;
-        }
-        .gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
-            gap: 20px; 
-            justify-content: center; 
-        }
-        .photo-card { 
-            position: relative; 
-            width: 160px; 
-            height: 160px; 
-            background: white; 
-            border-radius: 20px; /* গোল কোনা */
-            overflow: hidden; 
-            cursor: pointer; 
-            transition: all 0.4s ease; 
-            margin: 0 auto; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border: 3px solid #fff;
-        }
-        .photo-card:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 12px 30px rgba(240, 98, 146, 0.2); 
-            border-color: #f06292;
-        }
-        .photo-card img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
+        /* হেডার/নেভিগেশন */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 7%; background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
         }
 
-        /* পপ-আপ মডাল */
-        .modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; top: 0; 
-            width: 100%; height: 100%; 
-            background-color: rgba(255, 240, 243, 0.6); 
-            backdrop-filter: blur(15px); 
+        .logo { font-size: 24px; font-weight: 700; color: #333; }
+        .logo span { color: var(--primary-pink); }
+        
+        .nav-links { display: flex; gap: 20px; font-size: 14px; font-weight: 600; }
+        .nav-links a:hover { color: var(--primary-pink); }
+
+        /* হিরো সেকশন - ১নং ব্লক */
+        .hero-container {
+            display: grid; grid-template-columns: 1.2fr 1fr;
+            padding: 50px 7%; align-items: center; min-height: 80vh; gap: 40px;
         }
-        .modal-content { 
-            background: white; 
-            margin: 15% auto; 
-            padding: 30px; 
-            border-radius: 30px; 
-            width: 80%; 
-            max-width: 380px; 
-            text-align: center; 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1); 
-            position: relative; 
+
+        .hero-text h1 { font-size: 48px; line-height: 1.2; color: #222; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--primary-pink); font-size: 55px; }
+        .hero-text p { font-size: 16px; color: #777; margin-bottom: 30px; line-height: 1.8; max-width: 500px; }
+        
+        .hero-btns { display: flex; gap: 15px; align-items: center; }
+        .btn-main {
+            background-color: var(--primary-pink); color: white;
+            padding: 15px 35px; border-radius: 30px; font-weight: 700;
+            box-shadow: 0 10px 20px rgba(242, 104, 145, 0.2);
         }
-        .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #f06292; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(242, 104, 145, 0.3); }
+
+        /* ছবিতে ক্লিক করলে আসা সেই আইকন স্টাইল */
+        .play-icon {
+            width: 50px; height: 50px; border-radius: 50%;
+            background-color: #f7d1d7; display: flex; justify-content: center;
+            align-items: center; color: var(--primary-pink); font-size: 20px;
+        }
+
+        /* মূল গ্লাসমরফিজম ফটো কার্ড - আপনার ছবি ২নং ব্লক */
+        .photo-block {
+            position: relative; width: 100%; height: 500px;
+            border-radius: 50px; overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+            border: 2px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);
+        }
+
+        .photo-block img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* আপনার দেওয়া ছবির মতো সেই ফ্লোটিং সার্কেল আইকনস */
+        .floating-icons {
+            position: absolute; bottom: 30px; right: 30px; display: flex; gap: 10px;
+        }
+        .icon-circle {
+            width: 35px; height: 35px; border-radius: 50%;
+            background-color: #fce4e8; border: 3px solid #fff;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* 'Services' সেকশন - ৩নং ব্লক */
+        .services-container { padding: 80px 7%; text-align: center; background: #fff; border-radius: 50px 50px 0 0; }
+        .services-title { font-size: 32px; font-weight: 700; color: #222; margin-bottom: 50px; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        
+        /* স্পেশাল অ্যাক্টিভ কার্ড (লাল কালার) */
+        .service-card {
+            background-color: #fef4f6; padding: 40px 20px; border-radius: 20px;
+            transition: 0.3s; cursor: pointer; position: relative;
+        }
+        
+        .service-card.active {
+            background-color: var(--primary-pink); color: white;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(242, 104, 145, 0.2);
+        }
+
+        .service-card.active p, .service-card.active span { color: #ffeef1; }
+
+        .card-icon { font-size: 30px; margin-bottom: 20px; color: var(--primary-pink); }
+        .service-card.active .card-icon { color: #fff; }
+
+        .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .service-card p { font-size: 13px; color: #888; line-height: 1.6; }
+        .service-card span { font-size: 12px; color: var(--primary-pink); font-weight: 600; margin-top: 15px; display: block;}
+
+        /* অ্যাকশন গ্রিড - আপনার চ্যাট, মুভি ইত্যাদি আইকনস */
+        .action-grid-minimal {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 15px; max-width: 500px; margin: 30px auto;
+        }
+        .action-item-minimal {
+            background: #fff; padding: 20px; border-radius: 15px;
+            display: flex; flex-direction: column; align-items: center;
+            border: 1px solid #ffeef1; transition: 0.3s;
+        }
+        .action-item-minimal:hover { border-color: var(--primary-pink); background-color: #fef4f6;}
+        .action-item-minimal i { font-size: 20px; color: var(--primary-pink); margin-bottom: 5px;}
+        .action-item-minimal span { font-size: 11px; color: #555;}
+
+        /* মোবাইল রেসপন্সিভনেস */
+        @media (max-width: 768px) {
+            .hero-container { grid-template-columns: 1fr; padding: 30px 5%; text-align: center; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-btns { justify-content: center; }
+            .photo-block { height: 350px; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .action-grid-minimal { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="heart-icon-main">❤️</div>
-        <h1>Our Love Corner</h1>
+        <div class="logo"><span>F</span>emine</div>
+        <div class="nav-links">
+            <a href="#about">Home</a>
+            <a href="#services">About Us</a>
+            <a href="#movie">Services</a>
+            <a href="#games">Pages</a>
+            <a href="#gallery">Contact Us</a>
+        </div>
+        <i class="fas fa-search" style="font-size: 16px; color: #aaa;"></i>
     </header>
 
-    <div class="video-box">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-Hj-4hqUaaI" frameborder="0" allowfullscreen></iframe>
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Your Personality Is What Makes You <span>Character</span></h1>
+            <p>আমাদের ডেটিং অ্যাপ বা আড্ডার কর্নারে আপনাদের প্রথম স্মৃতিগুলো আমরা সুন্দর করে গুছিয়ে দেবো। এখানে আপনারা একসাথে মুভি দেখতে পারেন, গেম খেলতে পারেন এবং কথা বলতে পারেন।</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn-main">Learn More</a>
+                <a href="#" class="play-icon"><i class="fas fa-play"></i></a>
+            </div>
+        </div>
+
+        <div class="photo-block" id="gallery">
+            <img src="photo1.jpg" alt="Memory Photo"> <div class="floating-icons">
+                <div class="icon-circle" style="background-color: #f26891;"></div>
+                <div class="icon-circle"></div>
+                <div class="icon-circle"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="action-grid">
-        <a href="https://meet.jit.si/OurRomanticRoom" target="_blank" class="action-card"><i class="fas fa-video"></i> ভিডিও কল</a>
-        <a href="https://www.ludoking.com/" target="_blank" class="action-card"><i class="fas fa-dice"></i> লুডু খেলি</a>
-        <a href="https://www.miniclip.com/games/carrom-pool/" target="_blank" class="action-card"><i class="fas fa-circle-dot"></i> ক্যারাম বোর্ড</a>
-        <a href="https://poki.com/en/2-player" target="_blank" class="action-card"><i class="fas fa-gamepad"></i> আড্ডা গেমস</a>
-    </div>
-
-    <div class="gallery-container">
-        <div class="gallery-title">আমাদের স্মৃতি 📸</div>
-        <div class="gallery">
+    <div class="services-container" id="services">
+        <h2 class="services-title">We Can Help Transform You</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-search-location"></i></div>
+                <h3>Problem Solving</h3>
+                <p>আমাদের ডেটিং টুল আপনার ভালোবাসার মানুষকে সহজে খুঁজে পেতে সাহায্য করবে।</p>
+                <span>Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
             
-            <div class="photo-card" onclick="showDetails('বিশেষ মুহূর্ত', 'এই ছবিটি আমাদের হৃদয়ের খুব কাছের।')">
-                <img src="Screenshot_20260428-203759.jpg" alt="Memory">
+            <div class="service-card active">
+                <div class="card-icon"><i class="fas fa-heart"></i></div>
+                <h3>Relationships</h3>
+                <p>আমরা আপনাদের ভালোবাসার বন্ধন আরও মজবুত করতে কিছু রোমান্টিক টুলস দেব।</p>
+                <span>Learn More <i class="fas fa-arrow-right"></i></span>
             </div>
-
-            <div class="photo-card" onclick="showDetails('প্রিয় আড্ডা', 'স্মৃতিগুলো বেঁচে থাক এই গ্যালারিতে।')">
-                <img src="Screenshot_20260428-203759.jpg" alt="Memory">
+            
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-user-friends"></i></div>
+                <h3>Identifying Passion</h3>
+                <p>একে অপরের স্বপ্ন আর ভালো লাগাগুলো শেয়ার করার একটি সুন্দর স্পেস।</p>
+                <span>Learn More <i class="fas fa-arrow-right"></i></span>
             </div>
-
+            
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                <h3>Growth Career</h3>
+                <p>একসাথে জীবনের বড় সিদ্ধান্তগুলো নিয়ে আরও সুখী হওয়ার উপায়।</p>
+                <span>Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
         </div>
     </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div style="font-size: 45px; margin-bottom: 10px;">💖</div>
-            <h2 id="modal-title" style="color: #f06292;"></h2>
-            <p id="modal-text" style="color: #666; line-height: 1.6;"></p>
+    <div style="padding: 50px 7%; text-align: center;" id="adda">
+        <h3>Detaisl - Our Premium Tools</h3>
+        
+        <div class="action-grid-minimal">
+            <div class="action-item-minimal"><i class="fas fa-video"></i><span>ভিডিও কল</span></div>
+            <div class="action-item-minimal"><i class="fas fa-comments"></i><span>এসএমএস</span></div>
+            <div class="action-item-minimal"><i class="fas fa-film"></i><span>মুভি টাইম</span></div>
+            <div class="action-item-minimal"><i class="fas fa-dice"></i><span>গেম খেলি</span></div>
         </div>
+        
+        <p style="font-size: 13px; color: #888;">ছবিগুলো আপনি এই স্টাইল এ লাগাব এই স্টাইলে বসাবা সফির অল ডিটেলস গুলো এখানে লেখা থাকবে সাইডে ওয়েবসাইটটা আরো বড় কর</p>
     </div>
 
-    <script>
-        function showDetails(title, text) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-text').innerText = text;
-            document.getElementById('myModal').style.display = "block";
-        }
-        function closeModal() {
-            document.getElementById('myModal').style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
-                closeModal();
-            }
-        }
-    </script>
+    <div style="width: 100%; text-align: center; margin: 30px auto;">
+        <a href="https://meet.jit.si/OurLoveStoryPrivateRoom" target="_blank" class="btn-main">শুরু করুন ভিডিও কল <i class="fas fa-video" style="margin-left: 10px;"></i></a>
+    </div>
 
 </body>
-    </html>
+</html>

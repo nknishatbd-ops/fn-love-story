@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NF Love Story - Our World</title>
+    <title>NF Love Story - Our Private Playlist</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <style>
         :root {
             --primary-pink: #f26891;
-            --soft-pink-bg: #ffeef1;
-            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.8);
         }
 
         body {
@@ -29,158 +27,120 @@
         .logo { font-size: 22px; font-weight: 700; color: #333; }
         .logo span { color: var(--primary-pink); }
 
-        /* ইউটিউব সেকশন */
-        .youtube-section {
-            width: 90%; max-width: 650px; margin: 30px auto;
-            background: var(--glass-bg); padding: 25px; border-radius: 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05); text-align: center;
+        /* প্লেলিস্ট কন্টেইনার */
+        .playlist-section {
+            width: 90%; max-width: 900px; margin: 30px auto;
+            background: var(--glass-bg); padding: 20px; border-radius: 35px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;
             border: 1px solid white;
         }
-        .search-container {
-            display: flex; gap: 10px; margin-bottom: 20px;
-            background: white; padding: 5px; border-radius: 30px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .search-container input {
-            flex: 1; padding: 12px 20px; border: none; outline: none;
-            background: transparent; font-family: 'Poppins', sans-serif;
-        }
-        .search-container button {
-            background: var(--primary-pink); color: white; border: none;
-            padding: 10px 25px; border-radius: 25px; cursor: pointer; transition: 0.3s;
-        }
-        .search-container button:hover { background: #d63384; }
 
+        /* ভিডিও প্লেয়ার */
+        .video-side { width: 100%; }
         .video-box {
             position: relative; padding-bottom: 56.25%; height: 0;
-            overflow: hidden; border-radius: 25px; background: #000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            overflow: hidden; border-radius: 20px; background: #000;
         }
         .video-box iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* সোয়াইপ গ্যালারি */
-        .gallery-container { width: 90%; max-width: 450px; margin: 40px auto; }
-        .swiper { width: 100%; padding-bottom: 50px; }
-        .swiper-slide {
-            background: #fff; border-radius: 35px; overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 4px solid #fff;
+        /* গানের লিস্ট */
+        .list-side {
+            max-height: 400px; overflow-y: auto; padding-right: 10px;
         }
-        .swiper-slide img { width: 100%; height: 350px; object-fit: cover; }
-        .photo-text { padding: 20px; text-align: center; }
-        .photo-text h4 { margin: 0 0 10px; color: var(--primary-pink); font-size: 18px; }
-        .photo-text p { font-size: 13px; color: #666; margin-bottom: 15px; line-height: 1.6; }
-        .meta { font-size: 11px; font-weight: 700; color: #bbb; letter-spacing: 1px; }
+        .list-side h4 { margin-top: 0; color: var(--primary-pink); border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .song-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px; border-radius: 15px; background: white;
+            margin-bottom: 10px; cursor: pointer; transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .song-item:hover { background: #fff0f3; border-color: var(--primary-pink); }
+        .song-item.active { background: var(--primary-pink); color: white; }
+        
+        .song-item img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+        .song-info { flex: 1; }
+        .song-info div { font-size: 13px; font-weight: 600; }
+        .song-info span { font-size: 11px; opacity: 0.8; }
 
-        /* কল ও গেম বাটন */
-        .action-bar {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
-            padding: 20px 7%; max-width: 600px; margin: 0 auto;
-        }
-        .action-card {
-            background: #fff; padding: 15px; border-radius: 22px;
-            text-decoration: none; display: flex; flex-direction: column;
-            align-items: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-        .action-card:hover { transform: translateY(-5px); border: 1px solid var(--primary-pink); }
-        .action-card i { font-size: 22px; color: var(--primary-pink); margin-bottom: 8px; }
-        .action-card span { font-size: 11px; font-weight: 600; color: #444; }
+        /* স্ক্রলবার ডিজাইন */
+        .list-side::-webkit-scrollbar { width: 5px; }
+        .list-side::-webkit-scrollbar-thumb { background: var(--primary-pink); border-radius: 10px; }
 
-        @media (max-width: 768px) { .action-bar { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .playlist-section { grid-template-columns: 1fr; }
+            .list-side { max-height: none; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo"><span>NF</span> Love Story</div>
-        <i class="fas fa-heart" style="color: var(--primary-pink); animation: beat 1s infinite alternate;"></i>
+        <i class="fas fa-heart" style="color: var(--primary-pink);"></i>
     </header>
 
-    <div class="youtube-section">
-        <h3 style="margin-top: 0;">🎵 Search Your Song</h3>
-        <div class="search-container">
-            <input type="text" id="songInput" placeholder="গানের নাম লিখে সার্চ করুন...">
-            <button onclick="playSong()"><i class="fas fa-play"></i></button>
+    <h3 style="text-align: center; margin-top: 30px;">🎵 Our Love Playlist</h3>
+
+    <div class="playlist-section">
+        <div class="video-side">
+            <div class="video-box">
+                <iframe id="mainPlayer" src="https://www.youtube.com/embed/rV9Vp-2P0hE?modestbranding=1&rel=0" allowfullscreen></iframe>
+            </div>
+            <p id="nowPlaying" style="margin-top: 15px; font-weight: 600; font-size: 14px; text-align: center;">এখন চলছে: আমাদের প্রিয় গান</p>
         </div>
-        <div class="video-box">
-            <iframe id="videoPlayer" src="https://www.youtube.com/embed?listType=search&list=romantic+bangla+songs&modestbranding=1" allowfullscreen></iframe>
-        </div>
-    </div>
 
-    <div class="gallery-container">
-        <h3 style="text-align: center; margin-bottom: 25px;">📸 Our Memories</h3>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                
-                <div class="swiper-slide">
-                    <img src="Screenshot_20260428-203759.jpg" alt="Memory 1">
-                    <div class="photo-text">
-                        <h4>প্রথম আলাপ</h4>
-                        <p>সেদিন আমরা খুব লাজুক ছিলাম। এই ছবিটা আমাদের সবচাইতে সুন্দর শুরুর সাক্ষী।</p>
-                        <div class="meta">📅 ২০ জুন, ২০২৫ | দুপুর ২:৩০</div>
-                    </div>
+        <div class="list-side">
+            <h4>গানের তালিকা</h4>
+            
+            <div class="song-item active" onclick="changeSong('rV9Vp-2P0hE', 'আমাদের প্রিয় গান', this)">
+                <img src="https://img.youtube.com/vi/rV9Vp-2P0hE/default.jpg">
+                <div class="song-info">
+                    <div>আমাদের প্রিয় গান</div>
+                    <span>Nishat & Farjana Choice</span>
                 </div>
+                <i class="fas fa-play-circle"></i>
+            </div>
 
-                <div class="swiper-slide">
-                    <img src="Screenshot_20260428-203759.jpg" alt="Memory 2">
-                    <div class="photo-text">
-                        <h4>চায়ের আড্ডা</h4>
-                        <p>বৃষ্টির দিনে এক সাথে চা খাওয়ার মুহূর্ত। সময়টা যেন থেমে গিয়েছিল।</p>
-                        <div class="meta">📅 ১৫ আগস্ট, ২০২৫ | সন্ধ্যা ৬:০০</div>
-                    </div>
+            <div class="song-item" onclick="changeSong('dQw4w9WgXcQ', 'রোমান্টিক টিউন', this)">
+                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/default.jpg">
+                <div class="song-info">
+                    <div>রোমান্টিক টিউন</div>
+                    <span>Special Moments</span>
                 </div>
+                <i class="fas fa-play-circle"></i>
+            </div>
 
-                <div class="swiper-slide">
-                    <img src="Screenshot_20260428-203759.jpg" alt="Memory 3">
-                    <div class="photo-text">
-                        <h4>হাসিখুশি দিন</h4>
-                        <p>কোনো কারণ ছাড়াই তোমার হাসি দেখে তোলা। এই হাসিটা আমার সারা জীবনের সম্বল।</p>
-                        <div class="meta">📅 ১০ ডিসেম্বর, ২০২৫ | রাত ৯:১৫</div>
-                    </div>
+            <div class="song-item" onclick="changeSong('3jWRrafhO7M', 'অপেক্ষা', this)">
+                <img src="https://img.youtube.com/vi/3jWRrafhO7M/default.jpg">
+                <div class="song-info">
+                    <div>অপেক্ষা</div>
+                    <span>Heart Touching</span>
                 </div>
+                <i class="fas fa-play-circle"></i>
+            </div>
 
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
     </div>
 
-    <div class="action-bar">
-        <a href="https://meet.jit.si/NF-Love-Story" target="_blank" class="action-card"><i class="fas fa-video"></i><span>কল</span></a>
-        <a href="https://m.me/yourprofile" target="_blank" class="action-card"><i class="fas fa-comments"></i><span>চ্যাট</span></a>
-        <a href="https://www.ludoking.com/" target="_blank" class="action-card"><i class="fas fa-dice"></i><span>লুডু</span></a>
-        <a href="https://poki.com/en/2-player" target="_blank" class="action-card"><i class="fas fa-gamepad"></i><span>গেমস</span></a>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // ইউটিউব সার্চ লজিক
-        function playSong() {
-            const songName = document.getElementById('songInput').value;
-            if(songName.trim() !== "") {
-                const searchUrl = "https://www.youtube.com/embed?listType=search&list=" + encodeURIComponent(songName) + "&modestbranding=1&autoplay=1";
-                document.getElementById('videoPlayer').src = searchUrl;
-            } else {
-                alert("দয়া করে গানের নাম লিখুন!");
-            }
+        function changeSong(videoId, title, element) {
+            // প্লেয়ার আপডেট
+            const player = document.getElementById('mainPlayer');
+            player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&modestbranding=1&rel=0";
+            
+            // টাইটেল আপডেট
+            document.getElementById('nowPlaying').innerText = "এখন চলছে: " + title;
+
+            // একটিভ ক্লাস পরিবর্তন
+            const items = document.querySelectorAll('.song-item');
+            items.forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
         }
-
-        // এন্টার চাপলে সার্চ হবে
-        document.getElementById('songInput').addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                playSong();
-            }
-        });
-
-        // গ্যালারি স্লাইডার
-        var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
-            pagination: { el: ".swiper-pagination" },
-        });
     </script>
+
 </body>
 </html>

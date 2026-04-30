@@ -1,0 +1,112 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FN Love Story | Our Journey</title>
+    <style>
+        /* কালার এবং ফন্ট সেটআপ */
+        :root {
+            --primary-color: #ff4d6d; /* রোমান্টিক রেড/পিঙ্ক */
+            --bg-color: #fff5f6; /* হালকা ক্রিম/পিঙ্ক ব্যাকগ্রাউন্ড */
+            --text-color: #4a4a4a;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-align: center;
+        }
+        /* হেডার সেকশন */
+        header {
+            padding: 60px 20px;
+            background: linear-gradient(rgba(255, 77, 109, 0.1), rgba(255, 255, 255, 0)), url('your-cover-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        header p {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        /* মিউজিক প্লেয়ার স্টাইল */
+        .music-player {
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            display: inline-block;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* গ্যালারি গ্রিড */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.3);
+        }
+        /* ফুটার */
+        footer {
+            padding: 40px;
+            background-color: white;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        .heart {
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FN Love Story</h1>
+        <p>Every picture tells a story of us...</p>
+        
+        <div class="music-player">
+            <span style="margin-right: 10px;">🎵 Listen to our vibe:</span>
+            <audio controls loop>
+                <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </header>
+    <section class="gallery">
+        <img src="https://via.placeholder.com/400x600" alt="Couple Moment 1">
+        <img src="https://via.placeholder.com/400x400" alt="Couple Moment 2">
+        <img src="https://via.placeholder.com/400x500" alt="Couple Moment 3">
+        <img src="https://via.placeholder.com/400x600" alt="Couple Moment 4">
+        <img src="https://via.placeholder.com/400x400" alt="Couple Moment 5">
+        <img src="https://via.placeholder.com/400x500" alt="Couple Moment 6">
+    </section>
+    <footer>
+        <p>Made with <span class="heart">❤</span> for FN Love Story</p>
+        <p>&copy; 2026 All Memories Reserved.</p>
+    </footer>
+</body>
+</html>

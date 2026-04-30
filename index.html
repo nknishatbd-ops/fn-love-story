@@ -3,104 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FN Love Corner - Fun & Games</title>
+    <title>FN Love Corner</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            margin: 0; font-family: 'Segoe UI', sans-serif;
-            background: radial-gradient(circle at top left, #ffeef1 0%, #f7d1d7 100%);
-            min-height: 100vh; display: flex; flex-direction: column; align-items: center; color: #5d4a4a;
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background: radial-gradient(circle at top left, #ffeef1 0%, #f7d1d7 100%); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            color: #5d4a4a; 
+            padding-bottom: 30px; 
         }
 
         header { text-align: center; padding: 20px; }
-        .heart-icon { font-size: 50px; color: #f06292; animation: beat 1.5s infinite; }
+        .heart-icon-main { 
+            font-size: 60px; 
+            color: #f06292; 
+            animation: beat 1.5s infinite; 
+            text-shadow: 0 5px 15px rgba(240, 98, 146, 0.3); 
+        }
         @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        h1 { margin: 10px 0; font-size: 2.2em; color: #333; }
 
-        /* মুভি/মিউজিক সেকশন */
-        .video-box {
-            width: 95%; max-width: 500px; border-radius: 25px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(240, 98, 146, 0.2); 
-            background: #000; aspect-ratio: 16/9; margin-bottom: 25px;
-            border: 4px solid rgba(255, 255, 255, 0.6);
+        /* ইউটিউব প্লেয়ার */
+        .video-box { 
+            width: 95%; 
+            max-width: 500px; 
+            border-radius: 25px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            background: #000; 
+            aspect-ratio: 16/9; 
+            margin-bottom: 30px; 
+            border: 4px solid rgba(255, 255, 255, 0.6); 
         }
 
-        /* গেম সেকশন টাইটেল */
-        .section-title {
-            font-size: 1.2em; font-weight: bold; margin-bottom: 15px; color: #d63384;
-            background: rgba(255, 255, 255, 0.4); padding: 5px 20px; border-radius: 20px;
+        /* অ্যাকশন গ্রিড */
+        .action-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            width: 90%; 
+            max-width: 450px; 
+            margin-bottom: 30px; 
+        }
+        .action-card { 
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(10px); 
+            padding: 15px; 
+            border-radius: 20px; 
+            text-align: center; 
+            border: 1px solid white; 
+            text-decoration: none; 
+            color: #d63384; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
+        .action-card:hover { 
+            transform: translateY(-5px); 
+            background: #fff; 
+            box-shadow: 0 10px 25px rgba(240, 98, 146, 0.2); 
+        }
+        .action-card i { font-size: 24px; margin-bottom: 8px; display: block; color: #f06292; }
+
+        /* চারকোনা গ্যালারি স্টাইল */
+        .gallery-container { width: 90%; max-width: 800px; text-align: center; margin-top: 20px; }
+        .gallery-title { 
+            font-size: 1.5em; 
+            color: #d63384; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            background: rgba(255,255,255,0.3); 
+            padding: 5px 15px; 
+            border-radius: 20px; 
+            display: inline-block;
+        }
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+            gap: 20px; 
+            justify-content: center; 
+        }
+        .photo-card { 
+            position: relative; 
+            width: 160px; 
+            height: 160px; 
+            background: white; 
+            border-radius: 20px; /* গোল কোনা */
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: all 0.4s ease; 
+            margin: 0 auto; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid #fff;
+        }
+        .photo-card:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 12px 30px rgba(240, 98, 146, 0.2); 
+            border-color: #f06292;
+        }
+        .photo-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
         }
 
-        /* অ্যাকশন গ্রিড (Games & Calls) */
-        .action-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 15px; width: 90%; max-width: 450px; margin-bottom: 30px;
+        /* পপ-আপ মডাল */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(255, 240, 243, 0.6); 
+            backdrop-filter: blur(15px); 
         }
-
-        .action-card {
-            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px);
-            padding: 20px; border-radius: 25px; text-align: center;
-            border: 1px solid white; cursor: pointer; text-decoration: none;
-            color: #d63384; font-weight: bold; transition: 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .modal-content { 
+            background: white; 
+            margin: 15% auto; 
+            padding: 30px; 
+            border-radius: 30px; 
+            width: 80%; 
+            max-width: 380px; 
+            text-align: center; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1); 
+            position: relative; 
         }
-
-        .action-card:hover {
-            transform: translateY(-5px); background: #fff;
-            box-shadow: 0 10px 25px rgba(240, 98, 146, 0.2);
-        }
-
-        .action-card i { font-size: 28px; margin-bottom: 8px; display: block; color: #f06292; }
-
-        /* গ্যালারি স্টাইল */
-        .gallery { display: flex; gap: 15px; justify-content: center; padding: 20px; flex-wrap: wrap; }
-        .photo-card {
-            width: 100px; height: 100px; background: #fff;
-            clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-        }
-        .photo-card img { width: 100%; height: 100%; object-fit: cover; }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #f06292; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="heart-icon">❤️</div>
-        <h1>Our Special Corner</h1>
-        <p style="margin-top: -10px; color: #888;">আড্ডা, গান আর ভালোবাসা</p>
+        <div class="heart-icon-main">❤️</div>
+        <h1>Our Love Corner</h1>
     </header>
 
     <div class="video-box">
-        <iframe width="100%" height="100%" 
-                src="https://www.youtube.com/embed/-Hj-4hqUaaI" 
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-Hj-4hqUaaI" frameborder="0" allowfullscreen></iframe>
     </div>
-
-    <div class="section-title">চলুন কিছুক্ষণ খেলি! 🎮</div>
 
     <div class="action-grid">
-        <a href="https://www.ludoking.com/" target="_blank" class="action-card">
-            <i class="fas fa-dice"></i> লুডু খেলি
-        </a>
-
-        <a href="https://www.miniclip.com/games/carrom-pool/" target="_blank" class="action-card">
-            <i class="fas fa-circle-dot"></i> ক্যারাম বোর্ড
-        </a>
-
-        <a href="https://meet.jit.si/OurRomanticPrivateRoom" target="_blank" class="action-card">
-            <i class="fas fa-video"></i> ভিডিও কল
-        </a>
-
-        <a href="https://poki.com/en/2-player" target="_blank" class="action-card">
-            <i class="fas fa-gamepad"></i> আড্ডা গেমস
-        </a>
+        <a href="https://meet.jit.si/OurRomanticRoom" target="_blank" class="action-card"><i class="fas fa-video"></i> ভিডিও কল</a>
+        <a href="https://www.ludoking.com/" target="_blank" class="action-card"><i class="fas fa-dice"></i> লুডু খেলি</a>
+        <a href="https://www.miniclip.com/games/carrom-pool/" target="_blank" class="action-card"><i class="fas fa-circle-dot"></i> ক্যারাম বোর্ড</a>
+        <a href="https://poki.com/en/2-player" target="_blank" class="action-card"><i class="fas fa-gamepad"></i> আড্ডা গেমস</a>
     </div>
 
-    <div class="section-title">আমাদের স্মৃতি 📸</div>
-    <div class="gallery">
-        <div class="photo-card"><img src="Screenshot_20260428-203759.jpg"></div>
-        <div class="photo-card"><img src="photo2.jpg"></div>
-        <div class="photo-card"><img src="photo3.jpg"></div>
+    <div class="gallery-container">
+        <div class="gallery-title">আমাদের স্মৃতি 📸</div>
+        <div class="gallery">
+            
+            <div class="photo-card" onclick="showDetails('বিশেষ মুহূর্ত', 'এই ছবিটি আমাদের হৃদয়ের খুব কাছের।')">
+                <img src="Screenshot_20260428-203759.jpg" alt="Memory">
+            </div>
+
+            <div class="photo-card" onclick="showDetails('প্রিয় আড্ডা', 'স্মৃতিগুলো বেঁচে থাক এই গ্যালারিতে।')">
+                <img src="Screenshot_20260428-203759.jpg" alt="Memory">
+            </div>
+
+        </div>
     </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div style="font-size: 45px; margin-bottom: 10px;">💖</div>
+            <h2 id="modal-title" style="color: #f06292;"></h2>
+            <p id="modal-text" style="color: #666; line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <script>
+        function showDetails(title, text) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-text').innerText = text;
+            document.getElementById('myModal').style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+    </script>
 
 </body>
-</html>
+    </html>

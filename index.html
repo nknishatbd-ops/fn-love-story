@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FN Love Story - The Premium Adda</title>
+    <title>NF Love Story - Our Premium Adda</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -12,20 +12,19 @@
             --primary-pink: #f26891;
             --soft-pink-bg: #ffeef1;
             --dark-pink: #d63384;
-            --text-color: #5d4a4a;
             --glass-bg: rgba(255, 255, 255, 0.45);
         }
 
         body {
             margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
             background: radial-gradient(circle at top left, #ffeef1 0%, #f7d1d7 100%);
-            color: var(--text-color); overflow-x: hidden;
+            color: #5d4a4a; overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* হেডার/নেভিগেশন */
+        /* হেডার */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 7%; background: rgba(255, 255, 255, 0.2);
@@ -38,7 +37,7 @@
         .nav-links { display: flex; gap: 20px; font-size: 14px; font-weight: 600; }
         .nav-links a:hover { color: var(--primary-pink); }
 
-        /* হিরো সেকশন - ১নং ব্লক */
+        /* হিরো সেকশন */
         .hero-container {
             display: grid; grid-template-columns: 1.2fr 1fr;
             padding: 50px 7%; align-items: center; min-height: 80vh; gap: 40px;
@@ -56,170 +55,117 @@
         }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(242, 104, 145, 0.3); }
 
-        /* ছবিতে ক্লিক করলে আসা সেই আইকন স্টাইল */
-        .play-icon {
-            width: 50px; height: 50px; border-radius: 50%;
-            background-color: #f7d1d7; display: flex; justify-content: center;
-            align-items: center; color: var(--primary-pink); font-size: 20px;
-        }
-
-        /* মূল গ্লাসমরফিজম ফটো কার্ড - আপনার ছবি ২নং ব্লক */
+        /* গ্লাসমরফিজম ফটো কার্ড - বর্গাকার এবং গোল কোণা */
         .photo-block {
             position: relative; width: 100%; height: 500px;
-            border-radius: 50px; overflow: hidden;
+            border-radius: 30px; overflow: hidden; /* হার্ট শেপ বাদ দিয়ে চারকোনা করা হয়েছে */
             box-shadow: 0 25px 60px rgba(0,0,0,0.08);
-            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
-            border: 2px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);
+            background: #fff; border: 2px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
         }
 
         .photo-block img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* আপনার দেওয়া ছবির মতো সেই ফ্লোটিং সার্কেল আইকনস */
-        .floating-icons {
-            position: absolute; bottom: 30px; right: 30px; display: flex; gap: 10px;
-        }
+        .floating-icons { position: absolute; bottom: 30px; right: 30px; display: flex; gap: 10px; }
         .icon-circle {
             width: 35px; height: 35px; border-radius: 50%;
-            background-color: #fce4e8; border: 3px solid #fff;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: #fff; display: flex; justify-content: center;
+            align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* 'Services' সেকশন - ৩নং ব্লক */
-        .services-container { padding: 80px 7%; text-align: center; background: #fff; border-radius: 50px 50px 0 0; }
-        .services-title { font-size: 32px; font-weight: 700; color: #222; margin-bottom: 50px; }
-        
-        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        
-        /* স্পেশাল অ্যাক্টিভ কার্ড (লাল কালার) */
+        /* মিউজিক প্লেয়ার */
+        .music-player {
+            background: var(--glass-bg); backdrop-filter: blur(15px);
+            padding: 20px; border-radius: 30px; border: 1px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 500px; margin: 30px auto; text-align: center;
+        }
+
+        /* সার্ভিস কার্ডস */
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 50px 7%; }
         .service-card {
             background-color: #fef4f6; padding: 40px 20px; border-radius: 20px;
             transition: 0.3s; cursor: pointer; position: relative;
         }
-        
-        .service-card.active {
-            background-color: var(--primary-pink); color: white;
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(242, 104, 145, 0.2);
-        }
-
-        .service-card.active p, .service-card.active span { color: #ffeef1; }
-
+        .service-card.active { background-color: var(--primary-pink); color: white; transform: scale(1.05); box-shadow: 0 20px 40px rgba(242, 104, 145, 0.2); }
         .card-icon { font-size: 30px; margin-bottom: 20px; color: var(--primary-pink); }
         .service-card.active .card-icon { color: #fff; }
+        .service-card h3 { font-size: 18px; margin-bottom: 10px; }
 
-        .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .service-card p { font-size: 13px; color: #888; line-height: 1.6; }
-        .service-card span { font-size: 12px; color: var(--primary-pink); font-weight: 600; margin-top: 15px; display: block;}
-
-        /* অ্যাকশন গ্রিড - আপনার চ্যাট, মুভি ইত্যাদি আইকনস */
-        .action-grid-minimal {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 15px; max-width: 500px; margin: 30px auto;
+        /* অ্যাকশন গ্রিড (চ্যাট, গেম আইকনস) */
+        .action-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
+            padding: 20px 7%; text-align: center;
         }
-        .action-item-minimal {
-            background: #fff; padding: 20px; border-radius: 15px;
+        .action-item {
+            background: #fff; padding: 20px; border-radius: 20px;
             display: flex; flex-direction: column; align-items: center;
             border: 1px solid #ffeef1; transition: 0.3s;
         }
-        .action-item-minimal:hover { border-color: var(--primary-pink); background-color: #fef4f6;}
-        .action-item-minimal i { font-size: 20px; color: var(--primary-pink); margin-bottom: 5px;}
-        .action-item-minimal span { font-size: 11px; color: #555;}
+        .action-item:hover { transform: scale(1.05); border-color: var(--primary-pink); }
+        .action-item i { font-size: 24px; color: var(--primary-pink); margin-bottom: 8px; }
 
-        /* মোবাইল রেসপন্সিভনেস */
         @media (max-width: 768px) {
-            .hero-container { grid-template-columns: 1fr; padding: 30px 5%; text-align: center; }
-            .hero-text h1 { font-size: 36px; }
-            .hero-btns { justify-content: center; }
-            .photo-block { height: 350px; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .action-grid { grid-template-columns: repeat(2, 1fr); }
             .services-grid { grid-template-columns: 1fr 1fr; }
-            .action-grid-minimal { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo"><span>F</span>emine</div>
+        <div class="logo"><span>NF</span> Love Story</div>
         <div class="nav-links">
-            <a href="#about">Home</a>
-            <a href="#services">About Us</a>
-            <a href="#movie">Services</a>
-            <a href="#games">Pages</a>
-            <a href="#gallery">Contact Us</a>
+            <a href="#">Home</a>
+            <a href="#adda">Adda</a>
+            <a href="#music">Music</a>
         </div>
-        <i class="fas fa-search" style="font-size: 16px; color: #aaa;"></i>
+        <i class="fas fa-heart" style="color: var(--primary-pink);"></i>
     </header>
 
     <div class="hero-container">
         <div class="hero-text">
-            <h1>Your Personality Is What Makes You <span>Character</span></h1>
-            <p>আমাদের ডেটিং অ্যাপ বা আড্ডার কর্নারে আপনাদের প্রথম স্মৃতিগুলো আমরা সুন্দর করে গুছিয়ে দেবো। এখানে আপনারা একসাথে মুভি দেখতে পারেন, গেম খেলতে পারেন এবং কথা বলতে পারেন।</p>
+            <h1>Welcome to <span>NF</span> Love Story</h1>
+            <p>আমাদের ডেটিং কর্নার বা আড্ডার জোন। এটি Nishat এবং Farjana-র জন্য তৈরি একটি স্পেশাল কর্নার যেখানে আপনারা মুভি দেখতে পারেন এবং গেম খেলতে পারেন।</p>
             <div class="hero-btns">
-                <a href="#services" class="btn-main">Learn More</a>
-                <a href="#" class="play-icon"><i class="fas fa-play"></i></a>
+                <a href="#adda" class="btn-main">Get Started</a>
             </div>
         </div>
 
-        <div class="photo-block" id="gallery">
-            <img src="photo1.jpg" alt="Memory Photo"> <div class="floating-icons">
-                <div class="icon-circle" style="background-color: #f26891;"></div>
-                <div class="icon-circle"></div>
-                <div class="icon-circle"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="services-container" id="services">
-        <h2 class="services-title">We Can Help Transform You</h2>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="card-icon"><i class="fas fa-search-location"></i></div>
-                <h3>Problem Solving</h3>
-                <p>আমাদের ডেটিং টুল আপনার ভালোবাসার মানুষকে সহজে খুঁজে পেতে সাহায্য করবে।</p>
-                <span>Learn More <i class="fas fa-arrow-right"></i></span>
-            </div>
-            
-            <div class="service-card active">
-                <div class="card-icon"><i class="fas fa-heart"></i></div>
-                <h3>Relationships</h3>
-                <p>আমরা আপনাদের ভালোবাসার বন্ধন আরও মজবুত করতে কিছু রোমান্টিক টুলস দেব।</p>
-                <span>Learn More <i class="fas fa-arrow-right"></i></span>
-            </div>
-            
-            <div class="service-card">
-                <div class="card-icon"><i class="fas fa-user-friends"></i></div>
-                <h3>Identifying Passion</h3>
-                <p>একে অপরের স্বপ্ন আর ভালো লাগাগুলো শেয়ার করার একটি সুন্দর স্পেস।</p>
-                <span>Learn More <i class="fas fa-arrow-right"></i></span>
-            </div>
-            
-            <div class="service-card">
-                <div class="card-icon"><i class="fas fa-trophy"></i></div>
-                <h3>Growth Career</h3>
-                <p>একসাথে জীবনের বড় সিদ্ধান্তগুলো নিয়ে আরও সুখী হওয়ার উপায়।</p>
-                <span>Learn More <i class="fas fa-arrow-right"></i></span>
+        <div class="photo-block">
+            <img src="Screenshot_20260428-203759.jpg" alt="Memory Photo">
+            <div class="floating-icons">
+                <div class="icon-circle" style="background: var(--primary-pink); color: white;"><i class="fas fa-heart"></i></div>
+                <div class="icon-circle"><i class="fas fa-camera" style="color: var(--primary-pink);"></i></div>
             </div>
         </div>
     </div>
 
-    <div style="padding: 50px 7%; text-align: center;" id="adda">
-        <h3>Detaisl - Our Premium Tools</h3>
-        
-        <div class="action-grid-minimal">
-            <div class="action-item-minimal"><i class="fas fa-video"></i><span>ভিডিও কল</span></div>
-            <div class="action-item-minimal"><i class="fas fa-comments"></i><span>এসএমএস</span></div>
-            <div class="action-item-minimal"><i class="fas fa-film"></i><span>মুভি টাইম</span></div>
-            <div class="action-item-minimal"><i class="fas fa-dice"></i><span>গেম খেলি</span></div>
+    <div class="music-player" id="music">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+            <div style="width: 50px; height: 50px; background: var(--primary-pink); border-radius: 12px; display: flex; justify-content: center; align-items: center; color: white;"><i class="fas fa-music"></i></div>
+            <div style="text-align: left;"><h4>Our Love Song</h4><p style="font-size: 12px; color: #888;">Nishat & Farjana-র জন্য স্পেশাল</p></div>
         </div>
-        
-        <p style="font-size: 13px; color: #888;">ছবিগুলো আপনি এই স্টাইল এ লাগাব এই স্টাইলে বসাবা সফির অল ডিটেলস গুলো এখানে লেখা থাকবে সাইডে ওয়েবসাইটটা আরো বড় কর</p>
+        <audio id="audio" controls style="width: 100%; height: 35px;"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
     </div>
 
-    <div style="width: 100%; text-align: center; margin: 30px auto;">
-        <a href="https://meet.jit.si/OurLoveStoryPrivateRoom" target="_blank" class="btn-main">শুরু করুন ভিডিও কল <i class="fas fa-video" style="margin-left: 10px;"></i></a>
+    <h3 style="text-align: center; margin-top: 40px; color: #222;" id="adda">Our Premium Tools</h3>
+    <div class="action-grid">
+        <div class="action-item"><i class="fas fa-video"></i><span>ভিডিও কল</span></div>
+        <div class="action-item"><i class="fas fa-comments"></i><span>এসএমএস</span></div>
+        <div class="action-item"><i class="fas fa-dice"></i><span>লুডু গেম</span></div>
+        <div class="action-item"><i class="fas fa-gamepad"></i><span>অন্যান্য গেম</span></div>
     </div>
+
+    <div class="services-grid">
+        <div class="service-card"><div class="card-icon"><i class="fas fa-film"></i></div><h3>Movie Time</h3><p>আপনার পছন্দের মুভিগুলো একসাথে দেখার আড্ডা জোন।</p></div>
+        <div class="service-card active"><div class="card-icon"><i class="fas fa-heartbeat"></i></div><h3>Relationships</h3><p>আমাদের সুন্দর স্মৃতিগুলো সাজিয়ে রাখার গ্যালারি।</p></div>
+        <div class="service-card"><div class="card-icon"><i class="fas fa-search-location"></i></div><h3>Location</h3><p>আমাদের স্মৃতিগুলো কোন লোকেশনে, তা মনে রাখার উপায়।</p></div>
+        <div class="service-card"><div class="card-icon"><i class="fas fa-calendar-alt"></i></div><h3>Calendar</h3><p>আমাদের গুরুত্বপূর্ণ দিনগুলো মনে রাখার টুল।</p></div>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; font-size: 12px; color: #aaa;">© 2026 NF Love Story | Created with Love ❤️</footer>
 
 </body>
 </html>

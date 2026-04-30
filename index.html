@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NF Love Story - Our Premium Corner</title>
+    <title>NF Love Story - Our World</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <style>
         :root {
             --primary-pink: #f26891;
             --soft-pink-bg: #ffeef1;
-            --glass-bg: rgba(255, 255, 255, 0.5);
+            --glass-bg: rgba(255, 255, 255, 0.6);
         }
 
         body {
@@ -20,64 +21,62 @@
             color: #5d4a4a; overflow-x: hidden;
         }
 
-        /* হেডার */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 7%; background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-size: 22px; font-weight: 700; }
+        .logo { font-size: 22px; font-weight: 700; color: #333; }
         .logo span { color: var(--primary-pink); }
 
-        /* হিরো সেকশন */
-        .hero-container {
-            display: grid; grid-template-columns: 1.2fr 1fr;
-            padding: 40px 7%; align-items: center; gap: 30px;
+        /* ইউটিউব সার্চ বক্স */
+        .youtube-section {
+            width: 90%; max-width: 700px; margin: 30px auto;
+            background: var(--glass-bg); padding: 20px; border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
         }
-        .hero-text h1 { font-size: 40px; color: #222; }
-        .hero-text h1 span { color: var(--primary-pink); }
-
-        /* ফটো ব্লক */
-        .photo-block {
-            position: relative; width: 100%; height: 400px;
-            border-radius: 30px; overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background: #fff; border: 3px solid #fff;
+        .search-box {
+            display: flex; gap: 10px; margin-bottom: 15px;
         }
-        .photo-block img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* ইউটিউব প্লেয়ার সেকশন - লোগো ছাড়া ভাইব */
-        .youtube-container {
-            width: 90%; max-width: 600px; margin: 30px auto;
-            background: var(--glass-bg); padding: 15px;
-            border-radius: 30px; border: 1px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .search-box input {
+            flex: 1; padding: 12px 20px; border-radius: 25px; border: 1px solid #fff; outline: none;
+        }
+        .search-box button {
+            padding: 10px 20px; border-radius: 25px; border: none; background: var(--primary-pink); color: white; cursor: pointer;
         }
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0;
             overflow: hidden; border-radius: 20px; background: #000;
         }
         .video-wrapper iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border: 0;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* অ্যাকশন বাটন (কল ও গেমস) */
+        /* সোয়াইপ গ্যালারি স্টাইল */
+        .gallery-section { width: 90%; max-width: 500px; margin: 40px auto; }
+        .swiper { width: 100%; height: auto; padding-bottom: 50px; }
+        .swiper-slide {
+            background: #fff; border-radius: 30px; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid #fff;
+        }
+        .swiper-slide img { width: 100%; height: 350px; object-fit: cover; }
+        .photo-info { padding: 20px; text-align: center; background: #fff; }
+        .photo-info h4 { margin: 0; color: var(--primary-pink); }
+        .photo-info p { font-size: 13px; color: #777; margin: 10px 0; line-height: 1.5; }
+        .timestamp { font-size: 11px; font-weight: bold; color: #aaa; text-transform: uppercase; }
+
+        /* অ্যাকশন বাটন */
         .action-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 15px; padding: 20px 7%;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px 7%;
         }
         .action-item {
-            background: #fff; padding: 20px; border-radius: 20px;
-            display: flex; flex-direction: column; align-items: center;
-            text-decoration: none; color: inherit; transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            background: #fff; padding: 15px; border-radius: 20px; text-decoration: none;
+            display: flex; flex-direction: column; align-items: center; transition: 0.3s;
         }
-        .action-item:hover { transform: translateY(-5px); border: 1px solid var(--primary-pink); }
-        .action-item i { font-size: 24px; color: var(--primary-pink); margin-bottom: 8px; }
+        .action-item i { font-size: 22px; color: var(--primary-pink); margin-bottom: 5px; }
+        .action-item span { font-size: 12px; font-weight: 600; color: #555; }
 
         @media (max-width: 768px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
             .action-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -89,47 +88,78 @@
         <i class="fas fa-heart" style="color: var(--primary-pink);"></i>
     </header>
 
-    <div class="hero-container">
-        <div class="hero-text">
-            <h1>Welcome to <span>NF</span> World</h1>
-            <p>নিশাত এবং ফারজানার আড্ডা জোন। নিচে আপনার প্রিয় গান সার্চ করে প্লে করতে পারেন।</p>
+    <div class="youtube-section">
+        <h3 style="margin-bottom: 15px;">🎵 Search & Play Music</h3>
+        <div class="search-box">
+            <input type="text" id="ytQuery" placeholder="গানের নাম লিখুন...">
+            <button onclick="searchYouTube()"><i class="fas fa-search"></i></button>
         </div>
-
-        <div class="photo-block">
-            <img src="Screenshot_20260428-203759.jpg" alt="NF Photo">
-        </div>
-    </div>
-
-    <div class="youtube-container">
-        <h4 style="text-align: center; margin-bottom: 10px;">🎵 Play Your Favorite Music</h4>
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed?listType=search&list=romantic+bangla+songs&modestbranding=1&rel=0" allowfullscreen></iframe>
+            <iframe id="ytPlayer" src="https://www.youtube.com/embed/videoseries?list=PL_8-pS2XvPcl6D_vX23hT908A7_eA4-I8&modestbranding=1" allowfullscreen></iframe>
         </div>
-        <p style="font-size: 11px; text-align: center; margin-top: 10px; color: #888;">এখানে সরাসরি গান প্লে করুন</p>
     </div>
 
-    <h3 style="text-align: center; margin-top: 20px;">Adda & Fun Zone</h3>
+    <div class="gallery-section">
+        <h3 style="text-align: center; margin-bottom: 20px;">📸 Our Memories (Swipe)</h3>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <img src="Screenshot_20260428-203759.jpg" alt="Memory 1">
+                    <div class="photo-info">
+                        <h4>প্রথম আলাপ</h4>
+                        <p>এই ছবিটা তোলা হয়েছিল আমাদের সম্পর্কের শুরুতে। দিনটা ছিল খুব রোদেলা আর আমরা খুব লজ্জিত ছিলাম।</p>
+                        <div class="timestamp">📅 ২০ জুন, ২০২৫ | দুপুর ২:৩০</div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="Screenshot_20260428-203759.jpg" alt="Memory 2">
+                    <div class="photo-info">
+                        <h4>সুন্দর মুহূর্ত</h4>
+                        <p>হঠাৎ করেই এই ছবিটা তুলেছিলাম। তোমার হাসিতে চারপাশ উজ্জ্বল হয়ে গিয়েছিল।</p>
+                        <div class="timestamp">📅 ১৫ আগস্ট, ২০২৫ | সন্ধ্যা ৬:০০</div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="Screenshot_20260428-203759.jpg" alt="Memory 3">
+                    <div class="photo-info">
+                        <h4>বিশেষ ডিনার</h4>
+                        <p>সেদিন আমরা খুব মজার খাবার খেয়েছিলাম। এই মুহূর্তটা আজীবন মনে থাকবে।</p>
+                        <div class="timestamp">📅 ১০ ডিসেম্বর, ২০২৫ | রাত ৯:১৫</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
     <div class="action-grid">
-        <a href="https://meet.jit.si/NF-Love-Story-Room" target="_blank" class="action-item">
-            <i class="fas fa-video"></i><span>ভিডিও কল</span>
-        </a>
-        
-        <a href="https://m.me/your-profile" target="_blank" class="action-item">
-            <i class="fas fa-comments"></i><span>এসএমএস</span>
-        </a>
-        
-        <a href="https://www.ludoking.com/" target="_blank" class="action-item">
-            <i class="fas fa-dice"></i><span>লুডু খেলি</span>
-        </a>
-        
-        <a href="https://poki.com/en/2-player" target="_blank" class="action-item">
-            <i class="fas fa-gamepad"></i><span>আড্ডা গেমস</span>
-        </a>
+        <a href="https://meet.jit.si/NF-Room" class="action-item"><i class="fas fa-video"></i><span>কল</span></a>
+        <a href="#" class="action-item"><i class="fas fa-comments"></i><span>চ্যাট</span></a>
+        <a href="https://www.ludoking.com/" class="action-item"><i class="fas fa-dice"></i><span>লুডু</span></a>
+        <a href="https://poki.com/" class="action-item"><i class="fas fa-gamepad"></i><span>গেমস</span></a>
     </div>
 
-    <footer style="text-align: center; padding: 30px; font-size: 12px; color: #aaa;">
-        © 2026 NF Love Story | Created for Nishat & Farjana ❤️
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // ইউটিউব সার্চ ফাংশন
+        function searchYouTube() {
+            let query = document.getElementById('ytQuery').value;
+            if(query) {
+                let videoUrl = "https://www.youtube.com/embed?listType=search&list=" + encodeURIComponent(query) + "&modestbranding=1";
+                document.getElementById('ytPlayer').src = videoUrl;
+            }
+        }
 
+        // গ্যালারি স্লাইডার সেটআপ
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+        });
+    </script>
 </body>
 </html>
